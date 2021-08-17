@@ -1,0 +1,154 @@
+{
+  "version": 1,
+  "projects": {
+    "murder-hobo-maker": {
+      "projectType": "application",
+      "root": "apps/murder-hobo-maker",
+      "sourceRoot": "apps/murder-hobo-maker/src",
+      "prefix": "matabert",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/murder-hobo-maker",
+            "index": "apps/murder-hobo-maker/src/index.html",
+            "main": "apps/murder-hobo-maker/src/main.ts",
+            "polyfills": "apps/murder-hobo-maker/src/polyfills.ts",
+            "tsConfig": "apps/murder-hobo-maker/tsconfig.app.json",
+            "assets": [
+              "apps/murder-hobo-maker/src/favicon.ico",
+              "apps/murder-hobo-maker/src/assets"
+            ],
+            "styles": ["apps/murder-hobo-maker/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/murder-hobo-maker/src/environments/environment.ts",
+                  "with": "apps/murder-hobo-maker/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "murder-hobo-maker:build:production"
+            },
+            "development": {
+              "browserTarget": "murder-hobo-maker:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "murder-hobo-maker:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/murder-hobo-maker/src/**/*.ts",
+              "apps/murder-hobo-maker/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/murder-hobo-maker"],
+          "options": {
+            "jestConfig": "apps/murder-hobo-maker/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "murder-hobo-maker-e2e": {
+      "root": "apps/murder-hobo-maker-e2e",
+      "sourceRoot": "apps/murder-hobo-maker-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/murder-hobo-maker-e2e/cypress.json",
+            "tsConfig": "apps/murder-hobo-maker-e2e/tsconfig.e2e.json",
+            "devServerTarget": "murder-hobo-maker:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "murder-hobo-maker:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/murder-hobo-maker-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "css"
+    }
+  },
+  "defaultProject": "murder-hobo-maker"
+}
