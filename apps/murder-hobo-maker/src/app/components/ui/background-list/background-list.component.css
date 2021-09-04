@@ -1,0 +1,17 @@
+table {
+    width: 100%;
+}
+
+.mat-row .mat-cell {
+    cursor: pointer;
+    height: fit-content;
+}
+
+.mat-row:hover {
+    background-color: gainsboro;
+}
+
+.selected-row {
+    font-weight: bold;
+    background-color: gainsboro;
+}

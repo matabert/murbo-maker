@@ -1,0 +1,18 @@
+<body>
+    <matabert-ability-score-list></matabert-ability-score-list>
+    <mat-tab-group>
+        <mat-tab label="Dice Rolls">
+            <matabert-dice-rolls></matabert-dice-rolls>
+        </mat-tab>
+        <mat-tab label="Manual Entry">
+            <matabert-manual-entry (scoreSubmit)="submitValues($event)"></matabert-manual-entry>
+        </mat-tab>
+        <mat-tab label="Point Buy">
+            <matabert-point-buy></matabert-point-buy>
+        </mat-tab>
+        <mat-tab label="Standard Array">
+            <matabert-standard-array></matabert-standard-array>
+        </mat-tab>
+    </mat-tab-group>
+</body>
+

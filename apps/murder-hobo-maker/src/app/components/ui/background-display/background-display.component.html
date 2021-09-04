@@ -1,0 +1,41 @@
+<mat-grid-list cols="3" rowHeight="4:1">
+    <!--Name tile-->
+    <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <h1>{{displayedBackground._name}}</h1>
+    </mat-grid-tile>
+    <!--Flavor description tile-->
+    <mat-grid-tile [colspan]="3" [rowspan]="2">
+        <div class="descTile">
+            <p>{{displayedBackground._description}}</p>
+        </div>
+    </mat-grid-tile>
+    <!--Proficiencies list tile-->
+    <mat-grid-tile [colspan]="1" [rowspan]="6">
+        <!-- <mat-grid-tile-header class="head">Proficiencies</mat-grid-tile-header>
+        <ul *ngFor="let prof of displayedBackground._proficiencies; let j = index">
+            <li fxFlexOrder=j>{{prof._name}}</li>
+        </ul> -->
+        
+        <mat-grid-tile-header>Proficiencies</mat-grid-tile-header>
+        <div class="listCol">
+            <ul *ngFor="let prof of displayedBackground._proficiencies">
+                <li>{{prof._name ? prof._name : prof}}</li>
+            </ul>
+        </div>
+    </mat-grid-tile>
+    <!--Feature tile-->
+    <mat-grid-tile [colspan]="1" [rowspan]="6">
+        <mat-grid-tile-header class="head">{{displayedBackground._feature ? displayedBackground._feature._name : 'Feature'}}</mat-grid-tile-header>
+        <div class="listCol">
+            <p>{{displayedBackground._feature ? displayedBackground._feature. _description : ''}}</p>
+        </div>
+        
+    </mat-grid-tile>
+    <!--Equipment tile-->
+    <mat-grid-tile [colspan]="1" [rowspan]="6">
+        <mat-grid-tile-header>Equipment</mat-grid-tile-header>
+        <div class="listCol">
+
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>

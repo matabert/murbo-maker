@@ -1,0 +1,28 @@
+<mat-card class="main-card">
+    <mat-card-title>
+        {{score}}
+    </mat-card-title>
+    <mat-card-content *ngFor="let roll of individualRolls; let i = index" >
+        <span *ngIf="(droppedIndex === i); then droppedBlock else block"></span>
+        <ng-template #droppedBlock>
+            <mat-card class="sub-card lowest-roll">{{roll}}</mat-card>
+        </ng-template>
+        <ng-template #block>
+            <mat-card class="sub-card">{{roll}}</mat-card>
+        </ng-template>
+        <!--<mat-card class="sub-card" >{{roll}}</mat-card>-->
+    </mat-card-content>
+    <mat-card-actions>
+        <mat-form-field appearance="fill">
+            <mat-label>Assign score to:</mat-label>
+            <mat-select [(value)]="_rollAssignmentForm">
+                <mat-option value="STR">Strength</mat-option>
+                <mat-option value="DEX">Dexterity</mat-option>
+                <mat-option value="CON">Constitution</mat-option>
+                <mat-option value="INT">Intelligence</mat-option>
+                <mat-option value="WIS">Wisdom</mat-option>
+                <mat-option value="CHA">Charisma</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-card-actions>
+</mat-card>

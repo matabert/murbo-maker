@@ -1,0 +1,8 @@
+<body fxLayout="row">
+<div class="left" fxFlexOrder="1">
+    <matabert-background-list (activeBackgroundOut)="activateBackground($event)"></matabert-background-list>
+</div>
+<div class="right" fxFlexOrder="2">
+    <matabert-background-display [displayedBackground]="activeBackground"></matabert-background-display>
+</div>
+</body>

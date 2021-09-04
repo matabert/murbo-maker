@@ -1,0 +1,17 @@
+
+<div>
+    <form [formGroup]="_rollForm" (ngSubmit)="submit()">
+        <mat-radio-group aria-label="Rolling rules:" formControlName="numRolls">
+            <mat-radio-button id="3d6" value="3">3d6</mat-radio-button>
+            <mat-radio-button id="4d6" value="4">4d6</mat-radio-button>
+        </mat-radio-group>
+        <mat-checkbox id="rerollOnes" name="rerollOnes" formControlName="rerollOnesOption">Reroll 1s</mat-checkbox>
+        <button mat-button type="submit">Roll ability scores!</button>
+    </form>
+</div>
+<br>
+
+
+<div class="diceRollList" *ngFor="let roll of scoreRolls; let i = index">
+    <matabert-dice-roll-card [score]="scoreTotals[i]" [individualRolls]="scoreRolls[i]" [droppedIndex]="droppedRolls[i]"></matabert-dice-roll-card>
+</div>
